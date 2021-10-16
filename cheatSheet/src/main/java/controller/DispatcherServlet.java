@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Member.LoginAction;
 import controller.Member.LoginMoveAction;
+import controller.board.GoMianAction;
 
 /**
  * Servlet implementation class FrontController
@@ -51,8 +52,8 @@ public class DispatcherServlet extends HttpServlet {
 		else if(action.equals("/loginAction.do")) {
 			forward = new LoginAction().execute(request, response);
 		}
-		else if(action.equals("/selectOne")) {
-			
+		else if(action.equals("/main.do")) {
+			forward = new GoMianAction().execute(request, response);
 		}
 		else {
 			forward.setPath("error404.jsp");

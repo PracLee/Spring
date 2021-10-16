@@ -31,7 +31,7 @@ public class LoginAction implements Action{
 			// 로그인 성공
 			HttpSession session = request.getSession();
 			session.setAttribute("member", mvo);
-			action.setPath("main.jsp");
+			action.setPath("main.do");
 			action.setRedirect(false);			
 		}else {
 			// 로그인 실패
