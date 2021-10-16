@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <servlet>
-    <description></description>
-    <display-name>DispatcherServlet</display-name>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <servlet-class>controller.DispatcherServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
-  <filter>
-    <display-name>EncodingFliter</display-name>
-    <filter-name>EncodingFliter</filter-name>
-    <filter-class>controller.EncodingFliter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>EncodingFliter</filter-name>
-    <url-pattern>*.do</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>EncodingFliter</filter-name>
-    <url-pattern>*.jsp</url-pattern>
-  </filter-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<servlet>
+		<description></description>
+		<display-name>DispatcherServlet</display-name>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>controller.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+
+	<filter> <!-- filter안에는 filter-name, filter-class, init-param을 추가해 준다. filter-name은 
+			원하는대로 지정해도됨 -->
+		<filter-name>EncodingFilter</filter-name>
+		<init-param> <!-- encoidng값을 UTF-8로 만들어 준다. -->
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<filter-mapping>
+			<filter-name>EncodingFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+	</filter>
 </web-app>

@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import model.JDBC;
 
 
-
+@Repository
 public class MemberDAO {
 	private final String insertSQL = "insert into member(id, pw, name) values (?,?,?)";
 	private final String updateSQL = "update member set pw = ?, name =? where id = ?";

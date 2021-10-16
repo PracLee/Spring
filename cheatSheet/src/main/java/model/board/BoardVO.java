@@ -2,12 +2,23 @@ package model.board;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class BoardVO {
 	private int id;
 	private String title;
+	private String writer;
 	private String content;
 	private Date wdate;
 	
+	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public int getId() {
 		return id;
 	}
@@ -32,11 +43,13 @@ public class BoardVO {
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
 	}
-	
 	@Override
 	public String toString() {
-		return "BoardVO [id=" + id + ", title=" + title + ", content=" + content + ", wdate=" + wdate + "]";
+		return "BoardVO [id=" + id + ", title=" + title + ", writer=" + writer + ", content=" + content + ", wdate="
+				+ wdate + "]";
 	}
+	
+
 	
 	
 }

@@ -1,5 +1,8 @@
 package model.member;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class MemberVO {
 	private String id;
 	private String pw;
