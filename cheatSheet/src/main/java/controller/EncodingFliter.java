@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 /**
  * Servlet Filter implementation class EncodingFliter
  */
+
 public class EncodingFliter implements Filter {
 	String encoding;
     /**

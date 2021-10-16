@@ -18,16 +18,5 @@
 		<param-value>UTF-8</param-value>
 	</context-param>
 
-	<filter> <!-- filter안에는 filter-name, filter-class, init-param을 추가해 준다. filter-name은 
-			원하는대로 지정해도됨 -->
-		<filter-name>EncodingFilter</filter-name>
-		<init-param> <!-- encoidng값을 UTF-8로 만들어 준다. -->
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<filter-mapping>
-			<filter-name>EncodingFilter</filter-name>
-			<url-pattern>/*</url-pattern>
-		</filter-mapping>
-	</filter>
+
 </web-app>
