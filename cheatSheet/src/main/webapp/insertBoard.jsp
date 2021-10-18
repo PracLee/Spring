@@ -14,7 +14,7 @@
 				<td><input type="text" name="title"></td>
 			</tr>
 			<tr>
-				<td>PW</td>
+				<td>내용</td>
 				<td><input type="text" name="content"></td>
 			</tr>
 			<tr>
