@@ -16,7 +16,7 @@ public class BoardDAO {
 	private final String updateSQL="update board set title=?,content=? where id=?";
 	private final String deleteSQL="delete board where id=?";
 	private final String getBoardSQL="SELECT * FROM board WHERE id = ? ";
-	private final String getBoardListSQL="SELECT * FROM board";
+	private final String getBoardListSQL="SELECT * FROM board order by wdate desc";
 
 
 	public void insertBoard(BoardVO vo) {
