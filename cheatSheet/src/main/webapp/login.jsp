@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 하세요</title>
 </head>
 <body>
 	<form action="loginAction.do" method="post">
@@ -18,7 +18,8 @@
 				<td><input type="password" name="pw" required="required"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Login"></td>
+				<td><input type="submit" value="Login"></td>
+				<td><a href="insertMember.jsp">회원가입</a></td>
 			</tr>
 		</table>
 	</form>

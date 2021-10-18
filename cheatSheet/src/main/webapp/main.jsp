@@ -17,13 +17,17 @@
 		</tr>
 		<c:forEach var="v" items="${boardDatas}">
 			<tr>
-				<td>${v.id }</td>
-				<td>${v.title }</td>
-				<td>${v.writer }</td>
-				<td>${v.wdate }</td>				
+				<a href="selectOneBorad.do?id=${v.id}">
+					<td>${v.id }</td>
+					<td>${v.title }</td>
+					<td>${v.writer }</td>
+					<td>${v.wdate }</td>
+				</a>
 			</tr>
 		</c:forEach>
-
+		<tr>
+			<td><a href="insertBoard.jsp">글 입력하기</a></td>
+		</tr>
 	</table>
 </body>
 </html>

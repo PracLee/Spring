@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Member.InsertMemberDB;
 import controller.Member.LoginAction;
 import controller.Member.LoginMoveAction;
 import controller.board.GoMianAction;
+import controller.board.InsertBoardDB;
+import controller.board.SelectOneAction;
 
 /**
  * Servlet implementation class FrontController
@@ -54,6 +57,15 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		else if(action.equals("/main.do")) {
 			forward = new GoMianAction().execute(request, response);
+		}
+		else if(action.equals("/selectOneBorad.do")) {
+			forward = new SelectOneAction().execute(request, response);
+		}
+		else if(action.equals("/insertMemberDB.do")) {
+			forward = new InsertMemberDB().execute(request, response);
+		}
+		else if(action.equals("/insertBoardDB.do")) {
+			forward = new InsertBoardDB().execute(request, response);
 		}
 		else {
 			forward.setPath("error404.jsp");
