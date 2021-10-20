@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Member.InsertMemberDB;
-import controller.Member.LoginAction;
-import controller.Member.LoginMoveAction;
-import controller.board.GoMianAction;
+import controller.Member.LoginController;
+import controller.Member.LoginMoveController;
+import controller.board.GoMianController;
 import controller.board.InsertBoardDB;
 import controller.board.SelectOneAction;
 
@@ -20,7 +20,15 @@ import controller.board.SelectOneAction;
  */
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private HandlerMapping handlerMapping;
+    private ViewResolver viewResolver;
+    
+    public void init() {
+    	handlerMapping = new HandlerMapping();
+    	viewResolver = new ViewResolver();
+    	viewResolver.setPrefix("./");
+    	viewResolver.setSuffix(".jsp");
+    }
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,15 +56,25 @@ public class DispatcherServlet extends HttpServlet {
 		String cp = request.getContextPath();
 		String action = uri.substring(cp.length());
 		
-		ActionForward forward =null;
-		if(action.equals("/login.do")) {
+		// HM 에게 Action값을 전단, Controller 객체를 반환받는다.
+		// -> lookup(검색, 탐색) == 객체를 찾는 행위
+		
+		Controller controller = handlerMapping.getController(action);
+		String view = controller.execute(request, response);	// 다형성 실현
+		if(!view.contains(".do")) {
+			view = viewResolver.getView(view);
+		}
+		
+		response.sendRedirect(view);
+		
+		/*if(action.equals("/login.do")) {
 			forward = new LoginMoveAction().execute(request, response);
 		}
 		else if(action.equals("/loginAction.do")) {
-			forward = new LoginAction().execute(request, response);
+			forward = new LoginController().execute(request, response);
 		}
 		else if(action.equals("/main.do")) {
-			forward = new GoMianAction().execute(request, response);
+			forward = new GoMianController().execute(request, response);
 		}
 		else if(action.equals("/selectOneBorad.do")) {
 			forward = new SelectOneAction().execute(request, response);
@@ -78,7 +96,7 @@ public class DispatcherServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher(forward.getPath());
 				rd.forward(request, response);
 			}
-		}
+		}*/
 		
 	}
 }

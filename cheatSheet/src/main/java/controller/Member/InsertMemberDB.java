@@ -6,17 +6,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.Action;
-import controller.ActionForward;
+import controller.Controller;
 import model.member.MemberDAO;
 import model.member.MemberVO;
 
-public class InsertMemberDB implements Action{
+public class InsertMemberDB implements Controller{
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
+	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ActionForward action = new ActionForward();
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
 		String id = request.getParameter("id");
@@ -26,9 +24,8 @@ public class InsertMemberDB implements Action{
 		vo.setPw(pw);
 		vo.setName(name);
 		dao.insert(vo);
-		action.setPath("index.jsp");
-		action.setRedirect(false);
-		return action;
+
+		return "index";
 	}
 
 }

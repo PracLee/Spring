@@ -2,11 +2,8 @@ package model.board;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class BoardServiceImpl implements BoardService{
 
-	@Autowired
 	BoardDAO dao;
 	
 	@Override
